@@ -1,25 +1,48 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Counter from './components/Counter';
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      records:[
+        {id:"first",count:0},
+        {id:"second",count:0},
+        {id:"third",count:0}
+      ],
+      AllCount:0
+    }
+  }
+
+  getCount(record,data,offset){
+    const ChangeIndex = this.state.records.indexOf(record)
+    //console.log("index is " + ChangeIndex)
+    const newRecords = this.state.records.map((item,index) => {
+      if(index !== ChangeIndex){
+        return item
+      }
+
+      return {
+        ...item,
+        ...data
+      }
+    })
+
+
+
+    this.setState({
+      records:newRecords,
+      AllCount:this.state.AllCount + offset
+    })
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        {this.state.records.map((record) => <Counter key={record.id} record={record} 
+              sentCount={this.getCount.bind(this)}/>)}
+        <hr/>
+        AllCount is: {this.state.AllCount}
       </div>
     );
   }
