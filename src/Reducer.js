@@ -1,9 +1,9 @@
 import * as ActionTypes from './ActionTypes';
 
 export default (state, action) => {
-    const {counterCaption} = action;
+    const {counterCaption} = action;//得到是哪个控件发出的action
   
-    switch (action.type) {
+    switch (action.type) {//区分action的种类
       case ActionTypes.INCREMENT:
         return {...state, [counterCaption]: state[counterCaption] + 1};
       case ActionTypes.DECREMENT:

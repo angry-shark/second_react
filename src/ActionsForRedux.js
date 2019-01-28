@@ -1,5 +1,5 @@
 import * as ActionTypes from './ActionTypes';
-
+/*此处return action 给store的dipatch*/
 export const increment = (counterCaption) => {
     console.log("caption is " + counterCaption)
     return {
