@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ControlPanel from './views/ControlPanel';
 import './index.css';
+import ControlPanelForRedux from './views/ControlPanelForRedux';
 
 ReactDOM.render(
-  <ControlPanel/>,
+  <ControlPanelForRedux/>,
   document.getElementById('root')
 );
